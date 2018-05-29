@@ -1,0 +1,128 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activemodel (5.2.0)
+      activesupport (= 5.2.0)
+    activerecord (5.2.0)
+      activemodel (= 5.2.0)
+      activesupport (= 5.2.0)
+      arel (>= 9.0)
+    activesupport (5.2.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 0.7, < 2)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+    arel (9.0.0)
+    awesome_print (1.8.0)
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
+    builder (3.2.3)
+    byebug (10.0.2)
+    coderay (1.1.2)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
+    concurrent-ruby (1.0.5)
+    database_cleaner (1.7.0)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
+    diff-lcs (1.3)
+    equalizer (0.0.11)
+    factory_bot (4.10.0)
+      activesupport (>= 3.0.0)
+    ffi (1.9.23)
+    grape (1.0.3)
+      activesupport
+      builder
+      mustermann-grape (~> 1.0.0)
+      rack (>= 1.3.0)
+      rack-accept
+      virtus (>= 1.0.0)
+    grape-entity (0.7.1)
+      activesupport (>= 4.0)
+      multi_json (>= 1.3.2)
+    grape-swagger (0.29.0)
+      grape (>= 0.16.2)
+    i18n (1.0.1)
+      concurrent-ruby (~> 1.0)
+    ice_nine (0.11.2)
+    listen (3.1.5)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
+      ruby_dep (~> 1.2)
+    method_source (0.9.0)
+    minitest (5.11.3)
+    multi_json (1.13.1)
+    mustermann (1.0.2)
+    mustermann-grape (1.0.0)
+      mustermann (~> 1.0.0)
+    pg (1.0.0)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-byebug (3.6.0)
+      byebug (~> 10.0)
+      pry (~> 0.10)
+    puma (3.11.4)
+    rack (2.0.5)
+    rack-accept (0.4.5)
+      rack (>= 0.4)
+    rack-ssl-enforcer (0.2.9)
+    rack-test (1.0.0)
+      rack (>= 1.0, < 3)
+    racksh (1.0.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5)
+    rake (12.3.1)
+    rb-fsevent (0.10.3)
+    rb-inotify (0.9.10)
+      ffi (>= 0.5.0, < 2)
+    rerun (0.13.0)
+      listen (~> 3.0)
+    rspec (3.7.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
+    rspec-core (3.7.1)
+      rspec-support (~> 3.7.0)
+    rspec-expectations (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-mocks (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-support (3.7.1)
+    ruby_dep (1.5.0)
+    thread_safe (0.3.6)
+    tzinfo (1.2.5)
+      thread_safe (~> 0.1)
+    virtus (1.0.5)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  activerecord
+  awesome_print
+  database_cleaner
+  factory_bot
+  grape
+  grape-entity
+  grape-swagger
+  pg
+  pry-byebug
+  puma
+  rack-ssl-enforcer
+  rack-test
+  racksh
+  rake
+  rerun
+  rspec
+
+BUNDLED WITH
+   1.16.0

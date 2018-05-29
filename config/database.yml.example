@@ -1,0 +1,5 @@
+development:
+  url: postgres://user:password/grape_api_development
+
+test:
+  url: postgres://user:password/grape_api_test
