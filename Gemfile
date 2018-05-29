@@ -17,16 +17,16 @@ gem 'puma'
 group :development, :test do
   gem 'rspec'
   gem 'awesome_print'
+  gem 'pry-byebug'
 end
 
 group :development do
   gem 'rerun'
-  gem 'pry-byebug'
 end
 
 group :test do
-  gem 'rack-test', require: 'rack/test'
-  gem 'database_cleaner'
-  gem 'factory_bot'
+  gem 'rack-test', require: false
+  gem 'database_cleaner', require: false
+  gem 'factory_bot', require: false
 end
 
