@@ -36,3 +36,14 @@
   * The main element here is the **Song**, that permit duplicates on *name*, but not on *version*, could belong to a **Band** and/or an **Album** or not, but should have at least one **Musician** or many.
   * **Musician** & **Band** fit well to a STI: **Artist**
   * The missing actor here is the **User** that's the owner of the **PlayList**
+
+### 2018-05-18 - Application breakdown, files and folders
+
+* Context: Define folder structure and load criteria for the entire application.
+
+* Decision: The app root will have two main folders: `api` for all `Grape::API` classes, and `app` for models and services. The `api` folder will have one sub-folder for each resource and within it, a file for each endpoint.
+
+* Consequences:
+
+  * Each endpoint of the API will have its own isolated file.
+  * Perhaps this decision leads to some duplication, but it will not be a problem compared with the cleanliness that it will provide.
