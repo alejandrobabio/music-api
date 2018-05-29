@@ -23,3 +23,16 @@
   * The many to many relations fits better to a relational database
   * Sequel and ActiveRecord provides similar model functionalities. AR wins here, only because it is the most used in Ruby programming.
 
+### 2018-05-18 - Database Models Design
+
+* Context: Define the Entities and its Relations that will support the requirements.
+
+* Decision: Identify Entities and Relations between they, but do not implement until were necessary.
+
+![Models](models.png)
+
+* Consequences:
+
+  * The main element here is the **Song**, that permit duplicates on *name*, but not on *version*, could belong to a **Band** and/or an **Album** or not, but should have at least one **Musician** or many.
+  * **Musician** & **Band** fit well to a STI: **Artist**
+  * The missing actor here is the **User** that's the owner of the **PlayList**
