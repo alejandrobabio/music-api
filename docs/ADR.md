@@ -27,7 +27,7 @@
 
 * Context: Define the Entities and its Relations that will support the requirements.
 
-* Decision: Identify Entities and Relations between they, but do not implement until were necessary.
+* Decision: Identify Entities and Relations between them, but do not implement until were necessary.
 
 ![Models](models.png)
 
