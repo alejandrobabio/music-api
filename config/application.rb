@@ -1,4 +1,9 @@
-require File.expand_path('../boot', __FILE__)
+$LOAD_PATH.unshift(File.dirname(__FILE__))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'api'))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'app'))
+
+require 'boot'
 
 require 'erb'
 
@@ -7,4 +12,4 @@ ActiveRecord::Base.default_timezone = :utc
 ActiveRecord::Base.establish_connection(db_config)
 
 Dir[File.expand_path('../../app/models', __FILE__) + '/**/*.rb'].sort.each { |f| require f }
-require_relative '../api/base'
+require 'base'

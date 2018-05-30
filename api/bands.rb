@@ -1,4 +1,4 @@
-require_relative './bands/create.rb'
+require 'bands/create.rb'
 
 module MusicAPI
   class Bands < Grape::API

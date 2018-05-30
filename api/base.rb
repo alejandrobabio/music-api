@@ -1,7 +1,7 @@
-Dir[File.expand_path('../../app/entities', __FILE__) + '/**/*.rb'].sort.each { |f| require f }
-Dir[File.expand_path('../../app/services', __FILE__) + '/**/*.rb'].sort.each { |f| require f }
+Dir[File.join(File.dirname(__FILE__), '../app/entities/**/*.rb')].sort.each { |f| require f }
+Dir[File.join(File.dirname(__FILE__), '../app/services/**/*.rb')].sort.each { |f| require f }
 
-require_relative './bands.rb'
+require 'bands.rb'
 
 module MusicAPI
   class Base < Grape::API
