@@ -1,11 +1,10 @@
-require 'spec_helper'
+ENV['RACK_ENV'] = 'test'
+require File.expand_path('../../config/environment', __FILE__)
 
 require 'database_cleaner'
 require 'factory_bot'
 
-Dir[File.expand_path('../../app/models', __FILE__) + '/**/*.rb'].sort.each { |f| require f }
 Dir[File.expand_path('./factories', __FILE__) + '/**/*.rb'].each { |f| require f }
-
 
 RSpec.configure do |config|
   config.include(FactoryBot::Syntax::Methods)
