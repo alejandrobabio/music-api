@@ -1,2 +1,6 @@
 ENV['RACK_ENV'] = 'test'
-require File.expand_path('../../config/boot', __FILE__)
+
+require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require ENV['RACK_ENV']

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :musician do
-    name { Faker::Name.name }
-    bio { Faker::Lorem.paragraph(2) }
+    name 'Bono'
+    bio '- Bono, please, say something. - Something'
   end
 end

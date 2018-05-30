@@ -29,6 +29,7 @@ group :test do
   gem 'database_cleaner', require: false
   gem 'factory_bot', require: false
   gem 'shoulda-matchers', require: false
-  gem 'faker'
+  # TODO: Evaluate faker gem, it's big and it slows tests
+  gem 'faker', require: false
 end
 
