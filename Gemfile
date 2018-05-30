@@ -11,7 +11,7 @@ gem 'activerecord', require: 'active_record'
 gem 'pg'
 gem 'rake'
 gem 'rack-ssl-enforcer'
-gem 'racksh'
+gem 'racksh', require: false
 gem 'puma'
 
 group :development, :test do
@@ -28,5 +28,7 @@ group :test do
   gem 'rack-test', require: false
   gem 'database_cleaner', require: false
   gem 'factory_bot', require: false
+  gem 'shoulda-matchers', require: false
+  gem 'faker'
 end
 

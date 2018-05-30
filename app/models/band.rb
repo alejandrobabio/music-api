@@ -1,0 +1,2 @@
+class Band < Artist
+end
