@@ -7,7 +7,13 @@ require 'boot'
 
 require 'erb'
 
-db_config = YAML.load(ERB.new(File.read("config/database.yml")).result)[ENV['RACK_ENV']]
+db_config =
+  if ENV['RACK_ENV'] == 'production'
+    YAML.load(ERB.new(File.read("config/database.yml")).result)[ENV['RACK_ENV']]
+  else
+    ENV['DATABASE_URL']
+  end
+
 ActiveRecord::Base.default_timezone = :utc
 ActiveRecord::Base.establish_connection(db_config)
 

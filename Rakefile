@@ -23,7 +23,7 @@ task routes: :environment do
   end
 end
 
-unless  ENV['RACK_ENV'] ||= 'production'
+unless  ENV['RACK_ENV'] == 'production'
   require 'rspec/core'
   require 'rspec/core/rake_task'
 
