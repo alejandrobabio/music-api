@@ -5,7 +5,7 @@ require 'database_cleaner'
 require 'factory_bot'
 require 'shoulda-matchers'
 
-Dir[File.expand_path('./factories', __FILE__) + '/**/*.rb'].each { |f| require f }
+Dir[File.expand_path('../support', __FILE__) + '/**/*.rb'].each { |f| require f }
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
