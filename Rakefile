@@ -23,10 +23,12 @@ task routes: :environment do
   end
 end
 
-require 'rspec/core'
-require 'rspec/core/rake_task'
+unless  ENV['RACK_ENV'] ||= 'production'
+  require 'rspec/core'
+  require 'rspec/core/rake_task'
 
-RSpec::Core::RakeTask.new(:spec)
+  RSpec::Core::RakeTask.new(:spec)
+end
 
 #Load tasks
 Dir.glob('lib/tasks/*.rake').each { |task| load task }
