@@ -23,7 +23,12 @@ def import_active_record_tasks(default_rake_app)
   # WARNING! This MUST be a String not a Symbol
   DatabaseTasks.env                    = environment
   DatabaseTasks.db_dir                 = db_dir
-  DatabaseTasks.database_configuration = YAML.load(ERB.new(File.read(db_config_path)).result)
+  DatabaseTasks.database_configuration =
+    if ENV['RACK_ENV'] == 'production'
+      { 'production' => { 'url' => ENV['DATABASE_URL'] } }
+    else
+      YAML.load(ERB.new(File.read(db_config_path)).result)
+    end
   DatabaseTasks.migrations_paths       = [migrations_path]
 
   # Several AR tasks rely (but do not include) on this task internally (like :create)
