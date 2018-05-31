@@ -27,7 +27,13 @@ module MusicAPI
         }.to change(Band, :count).by(1)
       end
 
-      it "can't create with an empty name"
+      it "can't create with an empty name" do
+        band_input = { name: nil }
+        post '/bands', band_input, header
+
+        expect(last_response.status).to eq 422
+        expect(last_response.body).to match(/Validation failed/)
+      end
     end
   end
 end

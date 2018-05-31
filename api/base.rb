@@ -9,7 +9,7 @@ module MusicAPI
 
     helpers do
       def logger
-        Grape::API.logger
+        Logger.new "log/#{ENV['RACK_ENV']}.log"
       end
     end
 
@@ -20,7 +20,7 @@ module MusicAPI
 
     rescue_from ActiveRecord::RecordInvalid do |exception|
       logger.warn exception
-      error!(exception.message, 409)
+      error!(exception.message, 422)
     end
 
     mount MusicAPI::Bands
