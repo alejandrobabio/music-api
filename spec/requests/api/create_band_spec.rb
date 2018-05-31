@@ -14,7 +14,9 @@ module MusicAPI
         post '/bands', band_input, header
 
         expect(last_response.status).to eq 201
-        expect(last_response.body).to eq({id: 1}.merge(band_input).to_json)
+        result = JSON.parse last_response.body
+        expect(result['name']).to eq band_input[:name]
+        expect(result['bio']).to eq band_input[:bio]
       end
 
       it 'creates a new band' do
