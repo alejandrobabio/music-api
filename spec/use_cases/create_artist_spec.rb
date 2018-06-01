@@ -1,8 +1,12 @@
 require 'spec_helper'
-require_relative '../../app/use_cases/create_artist.rb'
+require_relative '../../app/use_cases/shared/create_artist.rb'
+
+class TestCreateArtist
+  include MusicAPI::UseCases::CreateArtist
+end
 
 module MusicAPI
-  RSpec.describe UseCases::CreateArtist do
+  RSpec.describe TestCreateArtist do
     let(:model_class) { double }
     let(:use_case) { described_class.new(model_class) }
     let(:params) { { some: :data } }

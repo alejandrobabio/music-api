@@ -1,8 +1,12 @@
 module MusicAPI
   module UseCases
-    class CreateArtist
-      attr_reader :model_class
-      private :model_class
+    module CreateArtist
+      def self.included(base)
+        base.class_eval do
+          attr_reader :model_class
+          private :model_class
+        end
+      end
 
       def initialize(model_class)
         @model_class = model_class
