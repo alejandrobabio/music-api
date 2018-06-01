@@ -2,6 +2,7 @@ Dir[File.join(File.dirname(__FILE__), '../app/entities/**/*.rb')].sort.each { |f
 Dir[File.join(File.dirname(__FILE__), '../app/services/**/*.rb')].sort.each { |f| require f }
 
 require 'bands.rb'
+require 'musicians.rb'
 
 module MusicAPI
   class Base < Grape::API
@@ -24,6 +25,7 @@ module MusicAPI
     end
 
     mount MusicAPI::Bands
+    mount MusicAPI::Musicians
 
     add_swagger_documentation mount_path: '/api/swagger_doc'
   end

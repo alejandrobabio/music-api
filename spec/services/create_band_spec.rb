@@ -1,8 +1,8 @@
 require 'spec_helper'
-require_relative '../../app/services/create_band.rb'
+require_relative '../../app/services/create_artist.rb'
 
 module MusicAPI
-  RSpec.describe Services::CreateBand do
+  RSpec.describe Services::CreateArtist do
     let(:model_class) { double }
     let(:service) { described_class.new(model_class) }
     let(:params) { { some: :data } }

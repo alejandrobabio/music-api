@@ -1,7 +1,7 @@
 module MusicAPI
-  class Bands < Grape::API
+  class Musicians < Grape::API
     class Create < Grape::API
-      desc 'Create a new Band.'
+      desc 'Create a new Musician.'
 
       params do
         requires :name, type: String
@@ -9,8 +9,8 @@ module MusicAPI
       end
 
       post do
-        present Services::CreateArtist.new(Band).call(declared(params)),
-          with: Entities::Band
+        present Services::CreateArtist.new(Musician).call(declared(params)),
+          with: Entities::Musician
       end
     end
   end

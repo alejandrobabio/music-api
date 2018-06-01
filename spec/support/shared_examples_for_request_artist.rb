@@ -17,7 +17,7 @@ RSpec.shared_examples 'request create an Artist' do |type:|
 
       expect {
         post "/#{type}s", input, header
-      }.to change(Kernel.const_get(:band.to_s.capitalize), :count).by(1)
+      }.to change(Kernel.const_get(type.to_s.capitalize), :count).by(1)
     end
 
     it "can't create with an empty name" do

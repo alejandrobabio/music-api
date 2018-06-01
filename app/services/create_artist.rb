@@ -1,6 +1,6 @@
 module MusicAPI
   module Services
-    class CreateBand
+    class CreateArtist
       attr_reader :model_class
       private :model_class
 
