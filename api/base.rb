@@ -24,5 +24,7 @@ module MusicAPI
     end
 
     mount MusicAPI::Bands
+
+    add_swagger_documentation mount_path: '/api/swagger_doc'
   end
 end
