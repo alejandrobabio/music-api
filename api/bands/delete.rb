@@ -8,7 +8,7 @@ module MusicAPI
       end
 
       delete ':id' do
-        Services::DeleteBand.new(Band).call(params[:id])
+        UseCases::DeleteBand.new(Band).call(params[:id])
       end
     end
   end

@@ -59,3 +59,14 @@
   * When app grows tests still would be fast.
   * We need to pay attention to the needed stuff for each piece of code.
 
+
+### 2018-06-01 - Name for the namespace that holds main classes used in endpoints (actual: services)
+
+* Context: Actual name **service** is very vague, we need to be explicit that we hold business rules in this folder.
+
+* Decision: Rename the service folder as **use_cases**.
+
+* Consequences:
+
+  * It's clear that this will be the entire point of each action, and the business rules should be held in its files.
+  * Currently, exists a class **CreateArtist** used by endpoints of **Band::Create** and **Musician::Create**, this does not represent an use case and should be refactored.

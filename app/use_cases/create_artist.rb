@@ -1,6 +1,6 @@
 module MusicAPI
-  module Services
-    class DeleteBand
+  module UseCases
+    class CreateArtist
       attr_reader :model_class
       private :model_class
 
@@ -8,9 +8,8 @@ module MusicAPI
         @model_class = model_class
       end
 
-      def call(id)
-        model_class.destroy(id)
-        ''
+      def call(params)
+        model_class.create!(params)
       end
     end
   end

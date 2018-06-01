@@ -9,7 +9,7 @@ module MusicAPI
       end
 
       post do
-        present Services::CreateArtist.new(Musician).call(declared(params)),
+        present UseCases::CreateArtist.new(Musician).call(declared(params)),
           with: Entities::Musician
       end
     end

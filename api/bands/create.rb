@@ -9,7 +9,7 @@ module MusicAPI
       end
 
       post do
-        present Services::CreateArtist.new(Band).call(declared(params)),
+        present UseCases::CreateArtist.new(Band).call(declared(params)),
           with: Entities::Band
       end
     end

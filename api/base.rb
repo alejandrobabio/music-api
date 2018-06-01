@@ -1,5 +1,5 @@
 Dir[File.join(File.dirname(__FILE__), '../app/entities/**/*.rb')].sort.each { |f| require f }
-Dir[File.join(File.dirname(__FILE__), '../app/services/**/*.rb')].sort.each { |f| require f }
+Dir[File.join(File.dirname(__FILE__), '../app/use_cases/**/*.rb')].sort.each { |f| require f }
 
 require 'bands.rb'
 require 'musicians.rb'

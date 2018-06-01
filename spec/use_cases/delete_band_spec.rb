@@ -1,10 +1,10 @@
 require 'spec_helper'
-require_relative '../../app/services/delete_band.rb'
+require_relative '../../app/use_cases/delete_band.rb'
 
 module MusicAPI
-  RSpec.describe Services::DeleteBand do
+  RSpec.describe UseCases::DeleteBand do
     let(:model_class) { double }
-    let(:service) { described_class.new(model_class) }
+    let(:use_case) { described_class.new(model_class) }
     let(:id) { 123 }
 
     context 'when it deletes record' do
@@ -12,7 +12,7 @@ module MusicAPI
         expect(model_class).to receive(:destroy).with(id)
       end
 
-      it { expect(service.call(id)).to be_empty }
+      it { expect(use_case.call(id)).to be_empty }
     end
 
     context "when it can't delete the record" do
@@ -23,7 +23,7 @@ module MusicAPI
 
       it 'raises an exception' do
         expect {
-          service.call(id)
+          use_case.call(id)
         }.to raise_exception(StandardError)
       end
     end
