@@ -1,8 +1,12 @@
 require 'spec_helper'
-require_relative '../../app/use_cases/delete_band.rb'
+require_relative '../../app/use_cases/shared/delete_artist.rb'
+
+class TestDeleteArtist
+  include MusicAPI::UseCases::DeleteArtist
+end
 
 module MusicAPI
-  RSpec.describe UseCases::DeleteBand do
+  RSpec.describe TestDeleteArtist do
     let(:model_class) { double }
     let(:use_case) { described_class.new(model_class) }
     let(:id) { 123 }
