@@ -6,34 +6,6 @@ module MusicAPI
       described_class
     end
 
-    let(:header) { { 'Content-Type' => 'application/json' } }
-
-    describe 'POST /bands' do
-      it 'returns created' do
-        band_input = attributes_for :band
-        post '/bands', band_input, header
-
-        expect(last_response.status).to eq 201
-        result = JSON.parse last_response.body
-        expect(result['name']).to eq band_input[:name]
-        expect(result['bio']).to eq band_input[:bio]
-      end
-
-      it 'creates a new band' do
-        band_input = attributes_for :band
-
-        expect {
-          post '/bands', band_input, header
-        }.to change(Band, :count).by(1)
-      end
-
-      it "can't create with an empty name" do
-        band_input = { name: nil }
-        post '/bands', band_input, header
-
-        expect(last_response.status).to eq 422
-        expect(last_response.body).to match(/Validation failed/)
-      end
-    end
+    it_behaves_like 'request create an Artist', type: :band
   end
 end
