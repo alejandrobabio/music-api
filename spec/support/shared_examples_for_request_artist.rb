@@ -54,5 +54,4 @@ RSpec.shared_examples 'request delete an Artist' do |type:|
       expect(last_response.status).to eq 404
     end
   end
-
 end
