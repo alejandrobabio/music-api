@@ -2,7 +2,7 @@ require 'spec_helper'
 require_relative '../../app/use_cases/create_album.rb'
 
 module MusicAPI
-  RSpec.describe MusicAPI::UseCases::CreateAlbum do
+  RSpec.describe UseCases::CreateAlbum do
     let(:model_class) { double }
     let(:use_case) { described_class.new(model_class) }
     let(:params) { { some: :data } }

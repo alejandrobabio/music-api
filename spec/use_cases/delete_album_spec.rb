@@ -2,7 +2,7 @@ require 'spec_helper'
 require_relative '../../app/use_cases/delete_album'
 
 module MusicAPI
-  RSpec.describe MusicAPI::UseCases::DeleteAlbum do
+  RSpec.describe UseCases::DeleteAlbum do
     let(:model_class) { double }
     let(:use_case) { described_class.new(model_class) }
     let(:id) { 123 }
