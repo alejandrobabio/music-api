@@ -4,6 +4,7 @@ Dir[File.join(File.dirname(__FILE__), '../app/use_cases/**/*.rb')].sort.each { |
 require 'bands.rb'
 require 'musicians.rb'
 require 'albums.rb'
+require 'songs.rb'
 
 module MusicAPI
   class Base < Grape::API
@@ -22,12 +23,13 @@ module MusicAPI
 
     rescue_from ActiveRecord::RecordInvalid do |exception|
       logger.warn exception
-      error!(exception.message, 422)
+      error!("#{exception.record.class}: #{exception.message}", 422)
     end
 
     mount MusicAPI::Bands
     mount MusicAPI::Musicians
     mount MusicAPI::Albums
+    mount MusicAPI::Songs
 
     add_swagger_documentation mount_path: '/api/swagger_doc'
   end

@@ -12,11 +12,9 @@ module MusicAPI
       context 'with a new album' do
         it 'creates a new song' do
           params = {
-            song: {
-              song_attributes: 'a new song',
-              artist: { name:  'a new artist' },
-              album: { name:  'a new album'}
-            }
+            song_attributes: 'a new song',
+            artist: { name:  'a new artist' },
+            album: { name:  'a new album'}
           }
 
           allow(model_class).to receive(:transaction).and_yield
@@ -41,11 +39,9 @@ module MusicAPI
       context 'with a persisted album' do
         it 'creates a new song' do
           params = {
-            song: {
-              song_attributes: 'a new song',
-              artist: { name:  'a new artist' },
-              album: { id:  444 }
-            }
+            song_attributes: 'a new song',
+            artist: { name:  'a new artist' },
+            album: { id:  444 }
           }
 
           allow(model_class).to receive(:transaction).and_yield
@@ -69,10 +65,8 @@ module MusicAPI
       context 'without an album' do
         it 'creates a new song' do
           params = {
-            song: {
-              song_attributes: 'a new song',
-              artist: { name:  'a new artist' }
-            }
+            song_attributes: 'a new song',
+            artist: { name:  'a new artist' }
           }
 
           allow(model_class).to receive(:transaction).and_yield
@@ -95,11 +89,9 @@ module MusicAPI
       context 'with a new album' do
         it 'creates a new song' do
           params = {
-            song: {
-              song_attributes: 'a new song',
-              artist: { id:  222 },
-              album: { name:  'a new album'}
-            }
+            song_attributes: 'a new song',
+            artist: { id:  222 },
+            album: { name:  'a new album'}
           }
 
           allow(model_class).to receive(:transaction).and_yield
@@ -124,11 +116,9 @@ module MusicAPI
       context 'with a persisted album' do
         it 'creates a song' do
           params = {
-            song: {
-              song_attributes: 'a new song',
-              artist: { id:  222 },
-              album: { id:  444 }
-            }
+            song_attributes: 'a new song',
+            artist: { id:  222 },
+            album: { id:  444 }
           }
 
           allow(model_class).to receive(:transaction).and_yield
@@ -152,10 +142,8 @@ module MusicAPI
       context 'without an album' do
         it 'creates a song' do
           params = {
-            song: {
-              song_attributes: 'a new song',
-              artist: { id:  222 }
-            }
+            song_attributes: 'a new song',
+            artist: { id:  222 }
           }
 
           allow(model_class).to receive(:transaction).and_yield
@@ -177,11 +165,9 @@ module MusicAPI
     context 'with inconsistences between artist and album' do
       it 'raise an error if album does not belong to artist' do
         params = {
-          song: {
-            song_attributes: 'a new song',
-            artist: { id:  222 },
-            album: { id:  444 }
-          }
+          song_attributes: 'a new song',
+          artist: { id:  222 },
+          album: { id:  444 }
         }
 
         allow(model_class).to receive(:transaction).and_yield

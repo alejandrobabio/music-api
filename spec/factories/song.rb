@@ -10,11 +10,5 @@ FactoryBot.define do
       attr.artist_type = 'Band'
       attr.album = build :album, artist: band, artist_type: 'Band'
     end
-    after(:create) do |song, attr|
-      band = create :band, songs: [song]
-      attr.artist = band
-      attr.artist_type = 'Band'
-      attr.album = create :album, artist: band, artist_type: 'Band'
-    end
   end
 end

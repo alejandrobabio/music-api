@@ -13,7 +13,7 @@ module MusicAPI
       end
 
       def call(attrs)
-        song_attrs = attrs[:song].dup
+        song_attrs = attrs.dup
         artist_attrs = song_attrs.delete(:artist)
         album_attrs = song_attrs.delete(:album)
 
