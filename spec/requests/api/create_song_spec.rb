@@ -219,8 +219,21 @@ module MusicAPI
         )
       end
 
-      it 'with artist id and name and bio'
-      it 'with album id and name'
+      it 'with artist id and bio' do
+        input = song.merge(
+          musician: { id: 222, bio: new_musician[:bio] }
+        )
+        post '/songs', input, header
+        expect(last_response.status).to eq 400
+      end
+
+      it 'with album id and name' do
+        input = song.merge(
+          musician: new_musician, album: new_album.merge(id: 11)
+        )
+        post '/songs', input, header
+        expect(last_response.status).to eq 400
+      end
     end
   end
 end

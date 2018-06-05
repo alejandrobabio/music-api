@@ -1,3 +1,5 @@
+require 'params_validators/associate_artist_validator'
+
 module MusicAPI
   class Songs < Grape::API
     class Create < Grape::API
@@ -25,21 +27,15 @@ module MusicAPI
           optional :name, type: String, desc: 'Only informed for a new Album'
           exactly_one_of :id, :name
         end
-        optional :musician, type: Hash do
+        optional :musician, associate_artist: true, type: Hash do
           optional :id, type: Integer, desc: 'Provide for an existing Musician'
           optional :name, type: String, desc: 'Only informed for a new Musician'
-          exactly_one_of :id, :name
-          given :name do
-            optional :bio
-          end
+          optional :bio
         end
-        optional :band, type: Hash do
+        optional :band, associate_artist: true, type: Hash do
           optional :id, type: Integer, desc: 'Provide for an existing Band'
           optional :name, type: String, desc: 'Only informed for a new Band'
-          exactly_one_of :id, :name
-          given :name do
-            optional :bio
-          end
+          optional :bio
         end
         exactly_one_of :musician, :band
       end
