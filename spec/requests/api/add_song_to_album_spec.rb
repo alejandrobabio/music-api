@@ -19,13 +19,15 @@ module MusicAPI
       end
 
       it 'stores album id in song' do
+        expect(song.album_id).to be_nil
+
         put "/albums/#{album.id}/add_song", { song_id: song.id }, header
         song.reload
 
         expect(song.album_id).to eq album.id
       end
 
-      it 'respond with error if the song has already an album' do
+      it 'responds with error if the song has already an album' do
         song_with_album = create :song_with_album
 
         expect {
