@@ -1,7 +1,7 @@
+require_relative './shared/errors.rb'
+
 module MusicAPI
   module UseCases
-    InconsistentData = Class.new(StandardError)
-
     class CreateSong
       attr_reader :model_class, :artist_class, :album_class
       private :model_class, :artist_class, :album_class

@@ -9,6 +9,8 @@ RSpec.describe Album, type: :model do
 
   it { is_expected.to belong_to(:artist) }
 
+  it { is_expected.to have_many(:songs).dependent(:nullify) }
+
   it 'is not valid with a name duplicated' do
     subject.save
     new_subject = described_class.new(name: subject.name)
