@@ -9,7 +9,7 @@ module MusicAPI
 
     context 'with valid data' do
       it 'adds the song to the album' do
-        params = { album_id: 12, song_id: 685 }
+        params = { id: 12, song_id: 685 }
 
         album_instance = double('Album')
         song_instance = double('Song')
@@ -27,7 +27,7 @@ module MusicAPI
 
     context 'with errors' do
       it 'do not add if the album does not exists' do
-        params = { album_id: 12, song_id: 685 }
+        params = { id: 12, song_id: 685 }
 
         allow(album_class).to receive(:find).with(12).and_raise(StandardError.new)
 
@@ -37,7 +37,7 @@ module MusicAPI
       end
 
       it 'do not add if the song does not exists' do
-        params = { album_id: 12, song_id: 685 }
+        params = { id: 12, song_id: 685 }
 
         allow(album_class).to receive(:find).with(12)
         allow(song_class).to receive(:find).with(685).and_raise(StandardError.new)
@@ -48,7 +48,7 @@ module MusicAPI
       end
 
       it 'do not add if the song belongs to another album' do
-        params = { album_id: 12, song_id: 685 }
+        params = { id: 12, song_id: 685 }
 
         album_instance = double('Album')
         song_instance = double('Song')

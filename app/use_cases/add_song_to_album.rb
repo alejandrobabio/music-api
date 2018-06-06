@@ -12,7 +12,7 @@ module MusicAPI
       end
 
       def call(params)
-        album = album_class.find(params[:album_id])
+        album = album_class.find(params[:id])
         song = song_class.find(params[:song_id])
 
         raise InconsistentData if song[:album_id]

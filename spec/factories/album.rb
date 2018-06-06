@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :album do
-    name 'Dark Side of the Moon'
+    sequence(:name) { |i| "Album#{i}" }
   end
 end

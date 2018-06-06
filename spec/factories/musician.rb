@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :musician do
-    name 'Bono'
+    sequence(:name) { |i| "Musician#{i}" }
     bio '- Bono, please, say something. - Something'
   end
 end
