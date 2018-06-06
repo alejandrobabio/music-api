@@ -15,7 +15,9 @@ module MusicAPI
         album = album_class.find(params[:id])
         song = song_class.find(params[:song_id])
 
-        raise InconsistentData if song[:album_id]
+        if song[:album_id]
+          raise InconsistentData, 'The Song already belongs to an Album'
+        end
 
         album.songs << song
       end

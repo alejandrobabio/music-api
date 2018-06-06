@@ -18,12 +18,17 @@ module MusicAPI
 
     rescue_from ActiveRecord::RecordNotFound do |exception|
       logger.warn exception
-      error!('Product not found', 404)
+      error!('Record not found', 404)
     end
 
     rescue_from ActiveRecord::RecordInvalid do |exception|
       logger.warn exception
       error!("#{exception.record.class}: #{exception.message}", 422)
+    end
+
+    rescue_from UseCases::InconsistentData do |exception|
+      logger.warn exception
+      error!(exception.message, 422)
     end
 
     mount MusicAPI::Bands

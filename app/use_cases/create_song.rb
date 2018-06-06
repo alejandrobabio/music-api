@@ -34,7 +34,9 @@ module MusicAPI
               end
             end
 
-          raise InconsistentData if album && album[:artist_id] != artist[:id]
+          if album && album[:artist_id] != artist[:id]
+            raise InconsistentData, "Song's Album does not belongs to the Song's Artist"
+          end
 
           model_class.create!(song_attrs.merge(artist: artist, album: album))
         end

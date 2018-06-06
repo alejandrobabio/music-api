@@ -30,10 +30,13 @@ module MusicAPI
       it 'responds with error if the song has already an album' do
         song_with_album = create :song_with_album
 
-        expect {
-          put "/albums/#{album.id}/add_song",
+        put "/albums/#{album.id}/add_song",
             { song_id: song_with_album.id }, header
-        }.to raise_exception(UseCases::InconsistentData)
+
+        expect(last_response.status).to eq 422
+        expect(last_response.body).to match(
+          /The Song already belongs to an Album/
+        )
       end
     end
   end

@@ -29,17 +29,23 @@ module MusicAPI
       it 'responds with an error if the song has not album' do
         song_without_album = create :song
 
-        expect {
-          put "/albums/111/remove_song",
-            { song_id: song_without_album.id }, header
-        }.to raise_exception(UseCases::InconsistentData)
+        put "/albums/111/remove_song",
+          { song_id: song_without_album.id }, header
+
+        expect(last_response.status).to eq 422
+        expect(last_response.body).to match(
+          /Song should belong to Album/
+        )
       end
 
       it 'responds with an error if the song has another album' do
-        expect {
-          put "/albums/#{song.album_id + 1}/remove_song",
-            { song_id: song.id }, header
-        }.to raise_exception(UseCases::InconsistentData)
+        put "/albums/#{song.album_id + 1}/remove_song",
+          { song_id: song.id }, header
+
+        expect(last_response.status).to eq 422
+        expect(last_response.body).to match(
+          /Song should belong to Album/
+        )
       end
     end
   end

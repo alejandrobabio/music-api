@@ -13,7 +13,9 @@ module MusicAPI
       def call(params)
         song = song_class.find(params[:song_id])
 
-        raise InconsistentData unless song[:album_id] && song[:album_id] == params[:id]
+        unless song[:album_id] && song[:album_id] == params[:id]
+          raise InconsistentData, 'Song should belong to Album'
+        end
 
         song.update(album_id: nil)
       end
