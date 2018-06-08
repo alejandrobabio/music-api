@@ -3,6 +3,8 @@ RSpec.shared_examples 'an Artist' do
 
   it { is_expected.to validate_presence_of :name }
 
+  it { is_expected.to have_many(:songs) }
+
   it 'is valid with name and empty bio' do
     subject.bio = nil
     expect(subject.valid?).to be_truthy

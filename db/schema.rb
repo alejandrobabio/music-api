@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 3) do
+ActiveRecord::Schema.define(version: 6) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 3) do
     t.string "name"
     t.string "artist_type"
     t.integer "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["artist_type", "artist_id"], name: "index_albums_on_artist_type_and_artist_id"
   end
 
@@ -26,7 +28,24 @@ ActiveRecord::Schema.define(version: 3) do
     t.string "type"
     t.string "name"
     t.text "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["type", "id"], name: "index_artists_on_type_and_id"
+  end
+
+  create_table "play_list_songs", id: :serial, force: :cascade do |t|
+    t.integer "play_list_id"
+    t.integer "song_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["play_list_id"], name: "index_play_list_songs_on_play_list_id"
+    t.index ["song_id"], name: "index_play_list_songs_on_song_id"
+  end
+
+  create_table "play_lists", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "songs", id: :serial, force: :cascade do |t|
@@ -37,9 +56,13 @@ ActiveRecord::Schema.define(version: 3) do
     t.integer "album_id"
     t.string "artist_type"
     t.integer "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_songs_on_album_id"
     t.index ["artist_type", "artist_id"], name: "index_songs_on_artist_type_and_artist_id"
   end
 
+  add_foreign_key "play_list_songs", "play_lists"
+  add_foreign_key "play_list_songs", "songs"
   add_foreign_key "songs", "albums"
 end
