@@ -5,6 +5,7 @@ require 'bands.rb'
 require 'musicians.rb'
 require 'albums.rb'
 require 'songs.rb'
+require 'playlists.rb'
 
 module MusicAPI
   class Base < Grape::API
@@ -35,6 +36,7 @@ module MusicAPI
     mount MusicAPI::Musicians
     mount MusicAPI::Albums
     mount MusicAPI::Songs
+    mount MusicAPI::Playlists
 
     add_swagger_documentation mount_path: '/api/swagger_doc'
   end
