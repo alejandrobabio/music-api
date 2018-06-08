@@ -8,8 +8,8 @@ RSpec.describe Song, type: :model do
   it { is_expected.to validate_presence_of :artist }
   it { is_expected.to belong_to :album }
   it { is_expected.to belong_to(:artist) }
-  it { is_expected.to have_many(:play_list_songs) }
-  it { is_expected.to have_many(:play_lists).through(:play_list_songs) }
+  it { is_expected.to have_many(:playlist_songs) }
+  it { is_expected.to have_many(:playlists).through(:playlist_songs) }
 
   it 'is not valid with name and version duplicated' do
     subject.save

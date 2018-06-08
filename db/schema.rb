@@ -33,16 +33,16 @@ ActiveRecord::Schema.define(version: 6) do
     t.index ["type", "id"], name: "index_artists_on_type_and_id"
   end
 
-  create_table "play_list_songs", id: :serial, force: :cascade do |t|
-    t.integer "play_list_id"
+  create_table "playlist_songs", id: :serial, force: :cascade do |t|
+    t.integer "playlist_id"
     t.integer "song_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["play_list_id"], name: "index_play_list_songs_on_play_list_id"
-    t.index ["song_id"], name: "index_play_list_songs_on_song_id"
+    t.index ["playlist_id"], name: "index_playlist_songs_on_playlist_id"
+    t.index ["song_id"], name: "index_playlist_songs_on_song_id"
   end
 
-  create_table "play_lists", id: :serial, force: :cascade do |t|
+  create_table "playlists", id: :serial, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.index ["artist_type", "artist_id"], name: "index_songs_on_artist_type_and_artist_id"
   end
 
-  add_foreign_key "play_list_songs", "play_lists"
-  add_foreign_key "play_list_songs", "songs"
+  add_foreign_key "playlist_songs", "playlists"
+  add_foreign_key "playlist_songs", "songs"
   add_foreign_key "songs", "albums"
 end
