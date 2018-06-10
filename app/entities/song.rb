@@ -11,6 +11,7 @@ module MusicAPI
       expose :artist, as: :musician, using: Musician,
         if: ->(obj, opt) { obj.artist.type == 'Musician' }
       expose :album, using: Album, expose_nil: false
+      expose :photos, using: Photo, expose_nil: false
     end
   end
 end

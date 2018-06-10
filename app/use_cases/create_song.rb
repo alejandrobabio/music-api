@@ -16,6 +16,7 @@ module MusicAPI
         song_attrs = attrs.dup
         artist_attrs = song_attrs.delete(:artist)
         album_attrs = song_attrs.delete(:album)
+        photos_attrs = song_attrs.delete(:photos)
 
         model_class.transaction do
           artist =
@@ -38,7 +39,9 @@ module MusicAPI
             raise InconsistentData, "Song's Album does not belongs to the Song's Artist"
           end
 
-          model_class.create!(song_attrs.merge(artist: artist, album: album))
+          song = model_class.create!(song_attrs.merge(artist: artist, album: album))
+          song.photos.create!(photos_attrs) if photos_attrs
+          song
         end
       end
     end

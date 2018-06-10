@@ -38,6 +38,10 @@ module MusicAPI
           optional :bio
         end
         exactly_one_of :musician, :band
+        optional :photos, type: Array do
+          requires :title, type: String
+          requires :image, type: File
+        end
       end
 
       post do
