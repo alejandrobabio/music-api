@@ -4,6 +4,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'database_cleaner'
 require 'factory_bot'
 require 'shoulda-matchers'
+require 'sucker_punch/testing/inline'
 
 Dir[File.expand_path('../support', __FILE__) + '/**/*.rb'].each { |f| require f }
 

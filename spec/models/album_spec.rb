@@ -1,4 +1,4 @@
-require 'db_helper'
+require 'request_helper'
 
 RSpec.describe Album, type: :model do
   subject { Album.new(attributes_for :album) }
@@ -15,5 +15,15 @@ RSpec.describe Album, type: :model do
     subject.save
     new_subject = described_class.new(name: subject.name)
     expect(new_subject.valid?).to be_falsey
+  end
+
+  it 'has a cover_photo image' do
+    file = File.open('spec/fixtures/images/genesis_foxtrot.jpg')
+    subject.update(cover_photo: Rack::Test::UploadedFile.new(file, 'image/png'))
+
+    subject.reload
+    %i[original small thumbnail].each do |image_size|
+      expect(subject.cover_photo.keys).to include image_size
+    end
   end
 end
