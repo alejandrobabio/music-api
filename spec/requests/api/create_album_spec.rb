@@ -11,11 +11,14 @@ module MusicAPI
     describe 'POST /albums' do
       it 'returns created' do
         input = attributes_for :album
-        post "/albums", input, header
+        file = File.open('spec/fixtures/images/genesis_foxtrot.jpg')
+        input.merge!(cover_photo: Rack::Test::UploadedFile.new(file, 'image/png'))
+        post "/albums", input, { 'Content-Type' => 'multipart/form-data' }
 
         expect(last_response.status).to eq 201
         result = JSON.parse last_response.body
         expect(result['name']).to eq input[:name]
+        expect(result['cover_photo']['metadata']['filename']).to eq 'genesis_foxtrot.jpg'
       end
 
       it "creates a new album" do

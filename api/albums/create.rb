@@ -5,6 +5,7 @@ module MusicAPI
 
       params do
         requires :name, type: String
+        optional :cover_photo, type: File
       end
 
       post do

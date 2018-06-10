@@ -13,6 +13,9 @@ gem 'rake'
 gem 'rack-ssl-enforcer'
 gem 'racksh', require: false
 gem 'puma'
+gem 'shrine', '~> 2.0'
+gem 'image_processing', '~> 1.0'
+gem 'sucker_punch', '~> 2.0'
 
 group :development, :test do
   gem 'rspec'
