@@ -12,6 +12,7 @@ module MusicAPI
         if: ->(obj, opt) { obj.artist.type == 'Musician' }
       expose :album, using: Album, expose_nil: false
       expose :photos, using: Photo, expose_nil: false
+      expose :track
     end
   end
 end

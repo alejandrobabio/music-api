@@ -1,4 +1,8 @@
+require 'uploaders/audio_uploader'
+
 class Song < ActiveRecord::Base
+  include AudioUploader::Attachment.new(:track)
+
   belongs_to :album
   belongs_to :artist, polymorphic: true
   has_many :playlist_songs

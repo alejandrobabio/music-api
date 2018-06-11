@@ -1,4 +1,4 @@
-require 'db_helper'
+require 'request_helper'
 
 RSpec.describe Song, type: :model do
   subject { build :song }
@@ -28,5 +28,15 @@ RSpec.describe Song, type: :model do
     subject.save
     song = Song.new subject.attributes.merge(version: 'v11')
     expect(song).to be_valid
+  end
+
+  it 'has a track audio file' do
+    file = File.open('spec/fixtures/audio/sample_audio.mp3')
+    subject.update(track: Rack::Test::UploadedFile.new(file, 'audio/mpeg'))
+    subject.reload
+
+    expect(subject.track.metadata['filename']).to eq 'sample_audio.mp3'
+    expect(subject.track.metadata['mime_type']).to eq 'audio/mpeg'
+    expect(subject.track.data['storage']).to eq 'store'
   end
 end

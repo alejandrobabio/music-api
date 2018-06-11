@@ -208,18 +208,31 @@ module MusicAPI
             expect(last_response.status).to eq 201
             result = JSON.parse last_response.body
             expect(result['name']).to eq input[:name]
-            expect(result['duration']).to eq input[:duration]
-            expect(result['genre']).to eq input[:genre]
-            expect(result['version']).to eq input[:version]
-            expect(result['musician']['name']).to eq musician[:name]
-            expect(result['musician']['bio']).to eq musician[:bio]
-            expect(result['musician']['id']).to eq input[:musician][:id]
-            expect(result['album']['id']).to eq input[:album][:id]
-            expect(result['album']['name']).to eq album[:name]
             expect(result['photos'][0]['title']).to eq 'Foxtrot'
             expect(result['photos'][0]['image'].keys).to eq %w[original small thumbnail]
             expect(result['photos'][1]['title']).to eq 'Trespass'
             expect(result['photos'][1]['image'].keys).to eq %w[original small thumbnail]
+          end
+        end
+
+        context 'with track' do
+          it 'with an existed musician and an existed album' do
+            input = attributes_for :song
+            musician = create :musician
+            input[:musician] = { id: musician.id }
+            album = create :album, artist: musician
+            input[:album] = { id: album.id }
+            sample_audio = File.open('spec/fixtures/audio/sample_audio.mp3')
+            input.merge!(
+              track: Rack::Test::UploadedFile.new(sample_audio, 'audio/mpeg')
+            )
+            post '/songs', input, { 'Content-Type' => 'multipart/form-data' }
+
+            expect(last_response.status).to eq 201
+            result = JSON.parse last_response.body
+            expect(result['name']).to eq input[:name]
+            expect(result['track']['metadata']['filename']).to eq 'sample_audio.mp3'
+            expect(result['track']['metadata']['mime_type']).to eq 'audio/mpeg'
           end
         end
       end

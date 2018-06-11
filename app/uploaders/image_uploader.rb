@@ -8,6 +8,7 @@ class ImageUploader < Shrine
   plugin :pretty_location
   plugin :processing
   plugin :versions
+  plugin :delete_raw
   plugin :delete_promoted
   plugin :validation_helpers
   plugin :store_dimensions, analyzer: :mini_magick

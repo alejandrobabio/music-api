@@ -42,6 +42,7 @@ module MusicAPI
           requires :title, type: String
           requires :image, type: File
         end
+        optional :track, type: File, desc: 'Upload the audio file of this song'
       end
 
       post do

@@ -24,6 +24,7 @@ RSpec.describe Album, type: :model do
     subject.reload
     %i[original small thumbnail].each do |image_size|
       expect(subject.cover_photo.keys).to include image_size
+      expect(subject.cover_photo[image_size].data['storage']).to eq 'store'
     end
   end
 end
