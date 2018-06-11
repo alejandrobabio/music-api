@@ -39,8 +39,8 @@ module MusicAPI
         end
         exactly_one_of :musician, :band
         optional :photos, type: Array do
-          requires :title, type: String
-          requires :image, type: File
+          optional :title, type: String
+          optional :image, type: File
         end
         optional :track, type: File, desc: 'Upload the audio file of this song'
       end
