@@ -47,7 +47,7 @@ module MusicAPI
 
       post do
         present UseCases::CreateSong.new(Song, artist_class, Album)
-          .call(formated_params), with: Entities::Song
+          .call(formated_params), with: Entities::SongWithAssociations
       end
     end
   end

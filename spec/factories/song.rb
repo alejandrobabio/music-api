@@ -5,9 +5,11 @@ FactoryBot.define do
     genre 'Rock'
     version 'Album'
     after(:build) do |song, attr|
-      band = build :band, songs: [song]
-      attr.artist = band
-      attr.artist_type = 'Band'
+      unless song.artist
+        band = build :band, songs: [song]
+        attr.artist = band
+        attr.artist_type = 'Band'
+      end
     end
 
     trait :with_album do
