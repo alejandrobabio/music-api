@@ -10,8 +10,8 @@ module MusicAPI
 
     let(:playlist) { create :playlist }
 
-    describe 'Put /playlists/:id' do
-      it 'return created status' do
+    describe 'PUT /playlists/:id' do
+      it 'return updated status' do
         put "/playlists/#{playlist.id}", { name: 'new name' }, header
 
         expect(last_response.status).to eq 204

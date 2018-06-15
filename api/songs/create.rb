@@ -8,11 +8,11 @@ module MusicAPI
           params[:musician] ? Musician : Band
         end
 
-        def formated_params
-          formated_params = declared(params, include_missing: false)
-          musician = formated_params.delete(:musician)&.merge(type: 'Musician')
-          band = formated_params.delete(:band)&.merge(type: 'Band')
-          formated_params.merge(artist: musician || band)
+        def formatted_params
+          formatted_params = declared(params, include_missing: false)
+          musician = formatted_params.delete(:musician)&.merge(type: 'Musician')
+          band = formatted_params.delete(:band)&.merge(type: 'Band')
+          formatted_params.merge(artist: musician || band)
         end
       end
 
@@ -47,7 +47,7 @@ module MusicAPI
 
       post do
         present UseCases::CreateSong.new(Song, artist_class, Album)
-          .call(formated_params), with: Entities::SongWithAssociations
+          .call(formatted_params), with: Entities::SongWithAssociations
       end
     end
   end
