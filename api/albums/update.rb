@@ -21,14 +21,14 @@ module MusicAPI
       desc 'Update an Album'
 
       params do
-        optional :name, type: String
-        optional :musician_id, type: Integer
-        optional :band_id, type: Integer
+        optional :name, type: String, desc: 'Provide a new name'
+        optional :musician_id, type: Integer, desc: 'Provide a new Musician id'
+        optional :band_id, type: Integer, desc: 'Provide a new Band id'
         mutually_exclusive :band_id, :musician_id
-        optional :cover_photo, type: File
+        optional :cover_photo, type: File, desc: 'Provide a new Cover Photo'
       end
 
-      route_param :id, type: Integer do
+      route_param :id, type: Integer, desc: 'The id of the Album' do
         put do
           UseCases::UpdateAlbum.new(Album, artist_class).call(formatted_params)
           body false

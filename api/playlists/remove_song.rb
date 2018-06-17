@@ -4,10 +4,10 @@ module MusicAPI
       desc 'Remove a Song from a Playlist'
 
       params do
-        requires :song_id, type: Integer
+        requires :song_id, type: Integer, desc: 'The Song id to be removed'
       end
 
-      route_param :id, type: Integer do
+      route_param :id, type: Integer, desc: 'The Playlist id' do
         put 'remove_song' do
           UseCases::RemoveSongFromPlaylist.new(Playlist, Song).call(declared(params))
           body false

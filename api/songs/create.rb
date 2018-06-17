@@ -18,7 +18,7 @@ module MusicAPI
 
       desc 'Create a new Song'
       params do
-        requires :name, type: String
+        requires :name, type: String, desc: 'The name of the song'
         requires :duration, type: Integer, desc: 'Duration in seconds'
         requires :genre, type: String, desc: 'Rock, Folk, Jazz, Pop ...'
         requires :version, type: String, desc: 'Unique identificator, e.g: "Single 1987"'
@@ -30,17 +30,17 @@ module MusicAPI
         optional :musician, associate_artist: true, type: Hash do
           optional :id, type: Integer, desc: 'Provide for an existing Musician'
           optional :name, type: String, desc: 'Only informed for a new Musician'
-          optional :bio
+          optional :bio, type: String, desc: 'Add biographical information'
         end
         optional :band, associate_artist: true, type: Hash do
           optional :id, type: Integer, desc: 'Provide for an existing Band'
           optional :name, type: String, desc: 'Only informed for a new Band'
-          optional :bio
+          optional :bio, type: String, desc: 'Add biographical information'
         end
         exactly_one_of :musician, :band
         optional :photos, type: Array do
-          optional :title, type: String
-          optional :image, type: File
+          optional :title, type: String, desc: 'Provide the photo Title'
+          optional :image, type: File, desc: 'Provide the photo file'
         end
         optional :track, type: File, desc: 'Upload the audio file of this song'
       end

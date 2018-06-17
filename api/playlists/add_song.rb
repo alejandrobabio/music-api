@@ -4,10 +4,10 @@ module MusicAPI
       desc 'Add a Song to a Playlist'
 
       params do
-        requires :song_id, type: Integer
+        requires :song_id, type: Integer, desc: 'Provide the id of the Song to be added'
       end
 
-      route_param :id, type: Integer do
+      route_param :id, type: Integer, desc: 'The Playlist id' do
         put 'add_song' do
           UseCases::AddSongToPlaylist.new(Playlist, Song).call(declared(params))
           body false

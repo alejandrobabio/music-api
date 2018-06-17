@@ -4,8 +4,8 @@ module MusicAPI
       desc 'Create a new Album'
 
       params do
-        requires :name, type: String
-        optional :cover_photo, type: File
+        requires :name, type: String, desc: 'Name of the Album'
+        optional :cover_photo, type: File, desc: 'Cover Photo of the Album'
       end
 
       post do

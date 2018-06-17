@@ -7,7 +7,7 @@ module MusicAPI
         end
       end
 
-      desc 'Play a Song'
+      desc 'Play a Song via streaming'
       route_param :id, type: Integer do
         get 'play' do
           file = Song.find(params[:id]).track

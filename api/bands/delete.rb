@@ -3,12 +3,11 @@ module MusicAPI
     class Delete < Grape::API
       desc 'Delete a Band.'
 
-      params do
-        requires :id, type: Integer, desc: 'The Band id'
-      end
-
-      delete ':id' do
-        UseCases::DeleteBand.new(Band).call(params[:id])
+      route_param :id, type: Integer, desc: 'The Band id' do
+        delete do
+          UseCases::DeleteBand.new(Band).call(params[:id])
+          body false
+        end
       end
     end
   end

@@ -4,7 +4,7 @@ module MusicAPI
       desc 'Create a new Playlist'
 
       params do
-        requires :name, type: String
+        requires :name, type: String, desc: 'Provide a name for the Playlist'
       end
 
       post do

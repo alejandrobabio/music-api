@@ -1,7 +1,7 @@
 module MusicAPI
   class Songs < Grape::API
     class Index < Grape::API
-      desc 'List Songs'
+      desc 'List all Songs'
 
       get do
         present Song.all, with: Entities::SongWithAssociations

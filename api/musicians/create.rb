@@ -4,8 +4,8 @@ module MusicAPI
       desc 'Create a new Musician.'
 
       params do
-        requires :name, type: String
-        optional :bio,  type: String
+        requires :name, type: String, desc: 'The name of the Musician'
+        optional :bio,  type: String, desc: 'Add biographical information'
       end
 
       post do

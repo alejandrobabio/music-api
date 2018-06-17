@@ -16,7 +16,7 @@ module MusicAPI
 
       desc 'Update a Song'
       params do
-        optional :name, type: String
+        optional :name, type: String, desc: 'The name of the song'
         optional :duration, type: Integer, desc: 'Duration in seconds'
         optional :genre, type: String, desc: 'Rock, Folk, Jazz, Pop ...'
         optional :version, type: String, desc: 'Unique identificator, e.g: "Single 1987"'
@@ -25,15 +25,15 @@ module MusicAPI
         optional :band_id, type: Integer, desc: 'Provide the Id for change to an existing Band'
         mutually_exclusive :musician_id, :band_id
         optional :new_photos, type: Array do
-          optional :title, type: String
-          optional :image, type: File
+          optional :title, type: String, desc: 'Provide the photo Title'
+          optional :image, type: File, desc: 'Provide the photo file'
         end
         optional :remove_photo_ids, type: Array[Integer],
           desc: 'Provide the ids of the Photos to be removed'
         optional :track, type: File, desc: 'Change the audio file of this song'
       end
 
-      route_param :id, type: Integer do
+      route_param :id, type: Integer, desc: 'The Song id' do
         put do
           UseCases::UpdateSong.new(Song, artist_class, Album)
             .call(formatted_params)
