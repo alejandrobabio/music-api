@@ -1,6 +1,6 @@
 class Band < Artist
-  has_many :songs, as: :artist
-  has_many :albums, as: :artist
+  has_many :songs, foreign_key: 'artist_id'
+  has_many :albums, foreign_key: 'artist_id'
 
   validates :name, presence: true, uniqueness: true
 end

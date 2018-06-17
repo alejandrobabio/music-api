@@ -2,7 +2,6 @@ FactoryBot.define do
   factory :band, class: 'Band' do
     sequence(:name) { |i| "Band#{i}" }
     bio 'Mysterious Ways'
-    type 'Band'
 
     transient do
       songs_count 3
@@ -12,8 +11,7 @@ FactoryBot.define do
       after(:build) do |band, attr|
         attr.songs = build_list(
           :song, attr.songs_count,
-          artist: band,
-          artist_type: attr.type
+          artist: band
         )
       end
     end

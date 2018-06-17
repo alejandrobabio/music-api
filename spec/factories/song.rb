@@ -8,13 +8,12 @@ FactoryBot.define do
       unless song.artist
         band = build :band, songs: [song]
         attr.artist = band
-        attr.artist_type = 'Band'
       end
     end
 
     trait :with_album do
       after(:build) do |song, attr|
-        attr.album = build :album, artist: song.artist, artist_type: 'Band'
+        attr.album = build :album, artist: song.artist
       end
     end
 

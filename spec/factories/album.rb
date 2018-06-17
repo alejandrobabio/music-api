@@ -9,12 +9,10 @@ FactoryBot.define do
     trait :with_songs do
       after(:build) do |album, attr|
         attr.artist = build :musician
-        attr.artist_type = 'Musician'
         attr.songs = build_list(
           :song, attr.songs_count,
           album: album,
-          artist: album.artist,
-          artist_type: attr.artist_type
+          artist: album.artist
         )
       end
     end
@@ -22,14 +20,12 @@ FactoryBot.define do
     trait :with_musician do
       after(:build) do |album, attr|
         attr.artist = build :musician
-        attr.artist_type = 'Musician'
       end
     end
 
     trait :with_band do
       after(:build) do |album, attr|
         attr.artist = build :band
-        attr.artist_type = 'Band'
       end
     end
 

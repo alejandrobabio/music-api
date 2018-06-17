@@ -4,7 +4,7 @@ class Song < ActiveRecord::Base
   include AudioUploader::Attachment.new(:track)
 
   belongs_to :album
-  belongs_to :artist, polymorphic: true
+  belongs_to :artist
   has_many :playlist_songs
   has_many :playlists, through: :playlist_songs
   has_many :photos
