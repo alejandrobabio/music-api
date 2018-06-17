@@ -8,7 +8,7 @@ module MusicAPI
 
     before { create_list :playlist_with_songs, 5 }
 
-    context 'renders all songs' do
+    context 'renders all playlist with songs' do
       it 'return playlists' do
         get '/playlists'
 
