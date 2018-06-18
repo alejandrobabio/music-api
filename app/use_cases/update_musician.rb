@@ -1,6 +1,6 @@
 module MusicAPI
   module UseCases
-    class UpdateBand
+    class UpdateMusician
       attr_reader :model_class
       private :model_class
 
@@ -14,13 +14,13 @@ module MusicAPI
         new_albums = new_attrs.delete(:new_albums)
         remove_album_ids = new_attrs.delete(:remove_album_ids)
 
-        band = model_class.find(id)
-        band.assign_attributes(new_attrs)
-        band.albums.build(new_albums)
+        musician = model_class.find(id)
+        musician.assign_attributes(new_attrs)
+        musician.albums.build(new_albums)
 
         model_class.transaction do
-          band.albums.find(remove_album_ids).map(&:destroy) if remove_album_ids
-          band.save!
+          musician.albums.find(remove_album_ids).map(&:destroy) if remove_album_ids
+          musician.save!
         end
       end
     end
