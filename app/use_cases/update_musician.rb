@@ -16,7 +16,7 @@ module MusicAPI
 
         musician = model_class.find(id)
         musician.assign_attributes(new_attrs)
-        musician.albums.build(new_albums)
+        musician.albums.build(new_albums) if new_albums
 
         model_class.transaction do
           musician.albums.find(remove_album_ids).map(&:destroy) if remove_album_ids
